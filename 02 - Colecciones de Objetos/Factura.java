@@ -6,6 +6,7 @@
  * @version 1.0
  */
 import java.util.Vector;
+
 public class Factura
 {
     // Variables de Instancia 
