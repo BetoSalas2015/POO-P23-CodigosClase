@@ -111,7 +111,14 @@ public class Calculadora extends Frame {
                             txtDisplay.setText(String.valueOf(resultado));
                             operando =  punto = true;
                         } else {
-                            
+                            Button btnTemp = (Button) e.target;
+                            displaynum =  new String( txtDisplay.getText() );
+                            if(displaynum.equals("0")) {
+                                displaynum = "";
+                            }
+                            displaynum += btnTemp.getLabel();
+                            txtDisplay.setText(displaynum);
+
                         }
                     }
                 }
