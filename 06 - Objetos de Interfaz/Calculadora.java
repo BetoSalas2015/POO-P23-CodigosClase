@@ -1,12 +1,13 @@
 import java.awt.*;
 import java.awt.event.*;            //  Modelo de eventos 1.1
+import javax.swing.*;
 
-public class Calculadora extends Frame {
+public class Calculadora extends JFrame {
     // Interfaz
-    private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
-    private Button btnMas, btnMenos, btnMult, btnDiv, btnPunto, btnIgual, btnC;
-    private TextField txtDisplay;
-    private Panel pnlTeclado, pnlDisplay;
+    private JButton btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
+    private JButton btnMas, btnMenos, btnMult, btnDiv, btnPunto, btnIgual, btnC;
+    private JTextField txtDisplay;
+    private JPanel pnlTeclado, pnlDisplay;
     // Funcionalidad
     private double numero1, numero2, resultado;
     private char operador;
@@ -18,26 +19,26 @@ public class Calculadora extends Frame {
 
         // Creando Objetos gráficos
 
-        btn0 = new Button("0");         btn1 = new Button("1"); 
-        btn2 = new Button("2");         btn3 = new Button("3"); 
-        btn4 = new Button("4");         btn5 = new Button("5"); 
-        btn6 = new Button("6");         btn7 = new Button("7"); 
-        btn8 = new Button("8");         btn9 = new Button("9"); 
-        btnMas = new Button("+");       btnMenos = new Button("-"); 
-        btnMult = new Button("*");      btnDiv = new Button("/"); 
-        btnPunto = new Button(".");     btnIgual = new Button("="); 
-        btnC = new Button("C");         
+        btn0 = new JButton("0");         btn1 = new JButton("1"); 
+        btn2 = new JButton("2");         btn3 = new JButton("3"); 
+        btn4 = new JButton("4");         btn5 = new JButton("5"); 
+        btn6 = new JButton("6");         btn7 = new JButton("7"); 
+        btn8 = new JButton("8");         btn9 = new JButton("9"); 
+        btnMas = new JButton("+");       btnMenos = new JButton("-"); 
+        btnMult = new JButton("*");      btnDiv = new JButton("/"); 
+        btnPunto = new JButton(".");     btnIgual = new JButton("="); 
+        btnC = new JButton("C");         
 
-        txtDisplay = new TextField("0");
-        pnlDisplay = new Panel();
-        pnlTeclado = new Panel();
+        txtDisplay = new JTextField("0");
+        pnlDisplay = new JPanel();
+        pnlTeclado = new JPanel();
 
         // Configurando el display de la calculadora
         pnlDisplay.setLayout(new BorderLayout());
         pnlDisplay.add(btnC, "East");
         pnlDisplay.add(txtDisplay, "Center");
 
-        // Configurando el panel del teclado
+        // Configurando el JPanel del teclado
         pnlTeclado.setLayout(new GridLayout(4, 4, 5, 5));
         pnlTeclado.add(btn7);
         pnlTeclado.add(btn8);
@@ -58,7 +59,7 @@ public class Calculadora extends Frame {
         pnlTeclado.add(btnMas);
 
 
-        // Agregando Paneles a la interfaz
+        // Agregando JPaneles a la interfaz
         add(pnlDisplay, "North");
         add(pnlTeclado, "Center");
 
