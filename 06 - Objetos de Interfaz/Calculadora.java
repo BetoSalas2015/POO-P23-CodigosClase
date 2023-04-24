@@ -108,12 +108,26 @@ public class Calculadora extends JFrame {
     }
     private class BotonIgual implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            try {
+                opera();
+            } catch (DivideByZeroException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }
+
+        private void opera() throws DivideByZeroException, NumberFormatException {
             numero2 = Double.parseDouble(txtDisplay.getText());
             switch (operador) {
                 case '+': resultado = numero1 + numero2; break;
                 case '-': resultado = numero1 - numero2; break;
                 case '*': resultado = numero1 * numero2; break;
-                case '/': resultado = numero1 / numero2; break;
+                case '/': if (numero2 == 0) {
+                                throw new DivideByZeroException();
+                          } 
+                          resultado = numero1 / numero2; break;
             }
             txtDisplay.setText(String.valueOf(resultado));
             operando =  punto = true;
