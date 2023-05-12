@@ -9,20 +9,21 @@ import java.io.*;
 
 public class ReadFile extends JFrame {
     private JTextArea editor;
-    private FileReader entrada;
+    private BufferedReader entrada;
 
     public ReadFile() {
         super("Editor de Textos");
-        int car;
+        String car;
         editor = new JTextArea();
         setLayout(new BorderLayout());
         add(editor, "Center"); 
         //  LEctura de Archivo
         try {
-            entrada = new FileReader("ReadFile.java");
+            entrada = new BufferedReader(new FileReader("ReadFile.java"));
 
-            while(( car = entrada.read()) != -1 ) {
-                editor.append(String.valueOf( (char) car));
+
+            while(( car = entrada.readLine()) != null ) {
+                editor.append(car + '\n');
             }
             entrada.close();
         } catch (IOException e) {
