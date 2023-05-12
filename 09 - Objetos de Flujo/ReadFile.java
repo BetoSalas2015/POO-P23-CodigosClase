@@ -9,8 +9,7 @@ import java.io.*;
 
 public class ReadFile extends JFrame {
     private JTextArea editor;
-    private FileInputStream entrada;
-    private FileOutputStream salida;
+    private FileReader entrada;
 
     public ReadFile() {
         super("Editor de Textos");
@@ -20,7 +19,7 @@ public class ReadFile extends JFrame {
         add(editor, "Center"); 
         //  LEctura de Archivo
         try {
-            entrada = new FileInputStream("ReadFile.java");
+            entrada = new FileReader("ReadFile.java");
 
             while(( car = entrada.read()) != -1 ) {
                 editor.append(String.valueOf( (char) car));
@@ -30,21 +29,6 @@ public class ReadFile extends JFrame {
             System.out.println("Archivo no encontrado.");
         } 
 
-        // Escritura de Archivo
-        
-        try {
-            salida = new FileOutputStream("Copia de ReadFile.java");
-            byte[] contenido = editor.getText().getBytes();
-            int i = 0;
-            while (i < contenido.length) {
-                salida.write( contenido[i]);
-                i++;
-            }
-            salida.close();
-        } catch (IOException e) {
-            System.out.println("Archivo no se puede crear.");
-            
-        }
 
 
         addWindowListener(new CloseWin());
