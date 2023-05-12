@@ -99,8 +99,7 @@ public class Hora extends Frame implements Runnable {
   }
 
   public void run() {
-    int count = 0;
-    while (count <= 100) {
+    while (true) {
         tick();
         try {
             hilo.sleep(1000);
@@ -109,7 +108,6 @@ public class Hora extends Frame implements Runnable {
         }
         
         texto.setText(toString());
-        count++;
     }
   }
   
