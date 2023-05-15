@@ -25,17 +25,19 @@ public class ReadFile extends JFrame {
         add(editor, "Center"); 
         //  LEctura de Archivo
         try {
-            escribe = new DataOutputStream(
-                      new BufferedOutputStream(
-                      new FileOutputStream("directorio.dat")));
+            lee = new DataInputStream(
+                      new BufferedInputStream(
+                      new FileInputStream("directorio.dat")));
             
             for (int i = 0; i < 3; i++) {
-                escribe.writeUTF(nombres[i]);
-                escribe.writeUTF(apellidos[i]);
-                escribe.writeInt(edades[i]);
+                String nombre = lee.readUTF();
+                String apellido = lee.readUTF();
+                int edad = lee.readInt();
+                car = nombre + " " + apellido + ", Edad: " + edad + "\n";
+                editor.append(car);
             }
 
-            escribe.close();
+            lee.close();
         } catch (IOException e) {
             System.out.println("Archivo no encontrado.");
         } 
