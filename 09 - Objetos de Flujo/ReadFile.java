@@ -9,7 +9,13 @@ import java.io.*;
 
 public class ReadFile extends JFrame {
     private JTextArea editor;
-    private BufferedReader entrada;
+    private DataOutputStream escribe;
+    private DataInputStream lee;
+
+    private String[] nombres = { "Juan", "Andrés", "Raul"};
+    private String[] apellidos = { "Pérez", "Sánchez", "López"};
+    private int[] edades = {20, 30, 40};
+
 
     public ReadFile() {
         super("Editor de Textos");
@@ -19,13 +25,17 @@ public class ReadFile extends JFrame {
         add(editor, "Center"); 
         //  LEctura de Archivo
         try {
-            entrada = new BufferedReader(new FileReader("ReadFile.java"));
-
-
-            while(( car = entrada.readLine()) != null ) {
-                editor.append(car + '\n');
+            escribe = new DataOutputStream(
+                      new BufferedOutputStream(
+                      new FileOutputStream("directorio.dat")));
+            
+            for (int i = 0; i < 3; i++) {
+                escribe.writeUTF(nombres[i]);
+                escribe.writeUTF(apellidos[i]);
+                escribe.writeInt(edades[i]);
             }
-            entrada.close();
+
+            escribe.close();
         } catch (IOException e) {
             System.out.println("Archivo no encontrado.");
         } 
